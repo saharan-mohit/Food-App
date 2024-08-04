@@ -42,7 +42,7 @@ body('password').isLength({ min: 5 })],async(req,res) => {
     try {
         let username = await User.findOne({email : email});
        if(!username){
-        return res.status(400).json({errors : "Username and Password doesn't match"});
+        return res.status(400).json({errors : "Username doesn't exist"});
        }
        const pass = await bcrypt.compare(req.body.password,username.password);
        if(!pass){
