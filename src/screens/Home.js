@@ -4,6 +4,8 @@ import Footer from "../components/Footer";
 import Card from "../components/Card";
 import { Link } from "react-router-dom";
 
+
+
 export default function Home() {
   const [search, setSearch] = useState("");
   const [foodItem, setFoodItem] = useState([]);
@@ -11,7 +13,7 @@ export default function Home() {
 
   const loadData = async () => {
     try {
-      let response = await fetch("http://localhost:4000/api/foodData", {
+      let response = await fetch(`${process.env.REACT_APP_API_URL}/foodData`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

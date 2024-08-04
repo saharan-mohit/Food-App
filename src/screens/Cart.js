@@ -10,24 +10,9 @@ export default function Cart() {
   let totalPrice = data.reduce((total, food) => total + food.price, 0);
 
   const handleCheckOut = async () => {
-    // let userName = localStorage.getItem("userName");
-    // let response = await fetch("http://localhost:4000/api/orderData", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify({
-    //         order_data : data,
-    //         email : userName,
-    //         order_date : new Date().toDateString()
-    //      })
-    //   });
-    // if(response.status === 200){
-    //     dispatch({type : "DROP"})
-    // }
     try {
       let userName = localStorage.getItem("userName");
-      let response = await fetch("http://localhost:4000/api/orderdata", {
+      let response = await fetch(`${process.env.REACT_APP_API_URL}/orderdata`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
